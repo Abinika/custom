@@ -1,0 +1,22 @@
+<template>
+    <lightning-button variant="brand" label="Back To Dashboard"
+                                                        title="Back To Dashboard" onclick={handleHomeClick}>
+                                                    </lightning-button>
+<lightning-card title="Articles" icon-name="custom:custom63">
+
+    <div class="slds-m-around_medium">
+
+        <template if:true={accObj.data}>
+            <lightning-datatable key-field="Id" data={accObj.data} columns={columns} onsave={saveHandleAction}
+                draft-values={fldsItemValues} sorted-by={sortBy} sorted-direction={sortDirection}
+                onsort={handleSortAccountData} show-row-number-column>
+            </lightning-datatable>
+        </template>
+
+        <template if:true={accObj.error}>
+            <p>Record Not Found</p>
+        </template>
+
+    </div>
+</lightning-card>
+</template>

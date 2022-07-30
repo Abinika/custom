@@ -1,0 +1,186 @@
+<template>
+
+<lightning-card>
+    <h1 slot="title">
+        <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+        Add Newsletter
+    </h1>
+    <div>
+        <div class="slds-p-around_small"> 
+
+<lightning-record-edit-form
+    object-api-name="Newsletter__c" onsuccess={handleSuccessnews} onsubmit={handleSubmitnews}>
+<lightning-messages></lightning-messages>
+
+<div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Name"></lightning-input-field>
+        
+        <lightning-input-field field-name="Heading__c"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="OwnerId"></lightning-input-field>
+        <lightning-input-field field-name="National_Reach__c"></lightning-input-field>
+    </div>
+</div>
+    <div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Article_URL__c"></lightning-input-field>
+        <lightning-input-field field-name="Published_Date__c"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        
+        <lightning-input-field field-name="National_AVE__c"></lightning-input-field>
+        <lightning-input-field field-name="AVE__c"></lightning-input-field>
+    </div>
+</div>
+
+
+
+  <div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Banner_Image__c"></lightning-input-field>
+        <lightning-input-field field-name="Views__c"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        
+        <lightning-input-field field-name="Media_Impact_Score__c"></lightning-input-field>
+        <lightning-input-field field-name="Related_Tweets__c"></lightning-input-field>
+    </div>
+</div>
+  <div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <div class="slds-is-relative">
+
+                <lightning-icon size="x-small" icon-name=utility:add  
+                    onclick={openoutlethandler} style="position: absolute;bottom: 0;z-index: 1;display: flex; align-items: center;justify-content: center;height: 30px; width: 30px;right: 1px;" title="Add"></lightning-icon>
+ <lightning-input-field field-name="Outlets__c"></lightning-input-field>
+          </div>
+
+       
+        <lightning-input-field field-name="Article_Reach__c"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <div class="slds-is-relative">
+
+                <lightning-icon size="x-small" icon-name=utility:add  
+                    onclick={opencontacthandler} style="position: absolute;bottom: 0;z-index: 1;display: flex; align-items: center;justify-content: center;height: 30px; width: 30px;right: 1px;" title="Add"></lightning-icon>
+ <lightning-input-field field-name="Contacts__c"></lightning-input-field>
+          </div>
+       
+        <lightning-input-field field-name="Media_Type__c"></lightning-input-field>
+    </div>
+</div>
+ <div class="slds-grid">
+    <div class="slds-col slds-size_1-of-1">
+        <lightning-input-field field-name="Article_Summary__c"></lightning-input-field>
+    </div>
+ </div>
+<div class="slds-m-top_medium">
+    <lightning-button variant="brand" label="Back" title="Back" onclick={handleHomeClick}></lightning-button>
+    <lightning-button type="submit" variant="brand" label="Create"></lightning-button>
+</div>
+
+</lightning-record-edit-form>
+    
+    
+    </div>
+    </div>
+</lightning-card>
+
+<template if:true={openoutlet}>
+<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+  <div class="slds-modal__container">
+    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>
+      <span class="slds-assistive-text">Cancel and close</span>
+    </button>
+    <div class="slds-modal__header">
+      <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Add Article Specific Outlet</h1>
+    </div>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+<lightning-record-edit-form
+    object-api-name="Outlet__c" onsuccess={handleSuccess} onsubmit={handleSubmit}>
+<lightning-messages></lightning-messages>
+
+<div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Name"></lightning-input-field>
+        
+        <lightning-input-field field-name="Reach_Daily__c"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Media_Type__c"></lightning-input-field>
+        <lightning-input-field field-name="Reach_Monthly__c"></lightning-input-field>
+    </div>
+</div>
+<div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Profile_Image__c"></lightning-input-field>
+     
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+      
+        <lightning-input-field field-name="Domain_Name__c"></lightning-input-field>
+    </div>
+</div>
+   
+   <div class="slds-m-top_medium">
+    <lightning-button variant="brand" label="Cancel" title="Back" onclick={cancelopenoutlethandler}></lightning-button>
+    <lightning-button style="margin: left-20px;" type="submit" variant="brand" label="Create Outlet"></lightning-button>
+</div>
+
+</lightning-record-edit-form>
+ </div>
+
+  </div>
+</section>
+<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+
+<template if:true={opencontact}>
+<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heasding-01" class="slds-modal slds-fade-in-open">
+  <div class="slds-modal__container">
+    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>
+      <span class="slds-assistive-text">Cancel and close</span>
+    </button>
+    <div class="slds-modal__header">
+      <h1 id="modal-headsing-01" class="slds-modal__title slds-hyphenate">Add Article Specific Contact</h1>
+    </div>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-contenst-id-1">
+
+
+<lightning-record-edit-form
+    object-api-name="Contact" onsuccess={handleSuccesscontact} onsubmit={handleSubmitcontact}>
+<lightning-messages></lightning-messages>
+
+<div class="slds-grid">
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="LastName"></lightning-input-field>
+        
+        <lightning-input-field field-name="Email"></lightning-input-field>
+    </div>
+    <div class="slds-col slds-size_1-of-2">
+        <lightning-input-field field-name="Level__c"></lightning-input-field>
+        <lightning-input-field field-name="MobilePhone"></lightning-input-field>
+    </div>
+</div>
+<div class="slds-m-top_medium">
+    <lightning-button variant="brand" label="Cancel" title="Back" onclick={cancelopencontacthandler}></lightning-button>
+    <lightning-button style="margin: left-20px;" type="submit" variant="brand" label="Create Contact"></lightning-button>
+</div>
+
+</lightning-record-edit-form>
+</div>
+
+  </div>
+</section>
+<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
+</template>
